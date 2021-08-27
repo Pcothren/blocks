@@ -1,5 +1,6 @@
 | [Basics](#basics) - [File Extension](#file-extension) - [Customizing](#customizing) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/File-and-Directory-Selector) - [Selecting Multiple Files](#selecting-multiple-files) - [Bookmarks](#bookmarks) |
-|-|
+|----|
+||
 
 ## Basics
 The file dialog widget can be used to select a single file, multiple files, or a directory. When the user clicks the **Ok** button, the dialog's callback is ran. Information is passed through the app_data argument. The simplest case is as a director picker. Below is the example:

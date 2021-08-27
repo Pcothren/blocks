@@ -1,5 +1,5 @@
 | [Basics](#basics) - [Regular usage](#regular-usage) - [Selection Querying](#selection-querying) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Node-Editor)|
-|-|
+|----|
 | [Node Attribute Types](#node-attribute-types) - [Node Attribute Pin Shapes](#node-attribute-pin-shapes) - [Associated App Items](#associated-app-items) |
 
 ## Basics
@@ -53,6 +53,8 @@ dpg.start_dearpygui()
 
 You can retrieve selected nodes and links (and clear this selections with the following commands)
 ```python
+import dearpygui.dearpygui as dpg
+
 dpg.get_selected_nodes(editor_id)
 dpg.get_selected_links(editor_id)
 dpg.clear_selected_nodes(editor_id)
@@ -61,16 +63,18 @@ dpg.clear_selected_links(editor_id)
 
 ## Node Attribute Types
 The following constants can be used in the `attribute_type` argument for node attributes:
-||
-|-|
+
+| Attribute |
+| ---- |
 | **mvNode_Attr_Input** (default) |
 | **mvNode_Attr_Output** |
 | **mvNode_Attr_Static** |
 
 ## Node Attribute Pin Shapes
 The following constants can be used in the `shape` argument for node attributes:
-||
-|-|
+
+| Shape |
+| ---- |
 | **mvNode_PinShape_Circle** |
 | **mvNode_PinShape_CircleFilled** (default) |
 | **mvNode_PinShape_Triangle** |

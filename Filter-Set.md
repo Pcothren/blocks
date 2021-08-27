@@ -1,6 +1,6 @@
-| |
-|-|
 | [Basics](#basics) - [Tips](#tips) |
+|----|
+||
 
 ## Basics
 The filter set app item is a container that can be used to filter its children based on their `filter_key`. Most app items have a `filter_key` keyword that can be set when creating the item. This works by setting the value of the filter set. The easiest way to understand this is by considering the example below:

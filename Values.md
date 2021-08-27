@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Value App Items](#value-app-items) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Value-and-Data-Storage) |
-|-|
+|----|
+||
 
 ## Basics
 When a widget is added, it creates an associated value by default. Values can be shared between widgets with the same underlying value type. This is accomplished by using the `source` keyword. One of the benefits of this is to have multiple widgets control the same value.

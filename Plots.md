@@ -1,20 +1,6 @@
-| Table of Contents |
-|-|
-| [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Plots) |
-| [Basics](#basics) |
-| [Tips](#tips) |
-| [Updating Series](#updating-series) |
-| [Axis Limits](#axis-limits) |
-| [Custom Axis Labels](#custom-axis-labels) |
-| [Multiple Y Axes](#multiple-y-axes) |
-| [Annotations](#annotations) |
-| [Drag Points & Lines](#drag-points-and-lines) |
-| [Querying](#querying) |
-| [Custom Context Menus](#custom-context-menus) |
-| [Colors & Styles](#colors-and-styles) |
-| [Colormaps](#colormaps) |
-| [Gallery](#gallery) |
-
+| [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Plots) - [Basics](#basics) - [Tips](#tips) - [Updating Series](#updating-series) - [Axis Limits](#axis-limits) - [Custom Axis Labels](#custom-axis-labels) - [Multiple Y Axes](#multiple-y-axes) - [Annotations](#annotations) - [Drag Points & Lines](#drag-points-and-lines) - [Querying](#querying) - [Custom Context Menus](#custom-context-menus) - [Colors & Styles](#colors-and-styles) - [Colormaps](#colormaps) - [Gallery](#gallery) |
+| ---- |
+||
 ## Basics
 Plots are composed of multiple components. These include plot axes, data series, and an optional legend. Below is the minimal example for creating a plot:
 ```python

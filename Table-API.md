@@ -1,23 +1,8 @@
 **Still under construction and adding images!**
 
-| Table of Contents |
-|-------------------|
-| [Basics](#basics) |
-| [Borders & Background](#borders-background) |
-| [Column Headers](#column-headers) |
-| [Resizing](#resizing) |
-| [Column Options](#column-options) |
-| [Sorting](#sorting) |
-| [Scrolling](#scrolling) |
-| [Clipping](#clipping) |
-| [Filtering](#filtering) |
-| [Padding](#padding) |
-| [Outer Size](#outer-size) |
-| [Column Widths](#column-widths) |
-| [Rows](#rows) |
-| [Row Height](#row-height) |
-| [Search Delay](#search-delay) |
-
+| [Basics](#basics) - [Borders & Background](#borders-background) - [Column Headers](#column-headers) - [Resizing](#resizing) - [Column Options](#column-options) - [Sorting](#sorting) - [Scrolling](#scrolling) - [Clipping](#clipping) - [Filtering](#filtering) - [Padding](#padding) - [Outer Size](#outer-size) - [Column Widths](#column-widths) - [Rows](#rows) - [Row Height](#row-height) - [Search Delay](#search-delay) |
+| ---- |
+||
 ## Basics
 The table API is a low level API that can be used to create a table. It can also be used as a layout mechanism. Tables are composed of multiple components which include columns, rows, and the actual app items to be displayed. The best place to learn about the various configuration options for the table is by running the demo!
 
@@ -100,12 +85,13 @@ dpg.start_dearpygui()
 In order for a table to have resizable columns, the `resizable` and `borders_innerV` keywords must be set to **True**. You can also set the sizing policy 
  keyword, `policy`, using the following options:
 
-||
-|-|
+| Policy |
+| ---- |
 | mvTable_SizingFixedFit |
 | mvTable_SizingFixedSame |
 | mvTable_SizingStretchProp |
 | mvTable_SizingStretchSame |
+
 
 ### Stretch
 Below is an example of setting the stretch policy for the entire table:
@@ -182,6 +168,7 @@ dpg.start_dearpygui()
 
 ## Column Options
 There are a large number of options available for table columns which are best learned through running the demo, these include:
+
 | keyword | default value | description |
 |---------|---------------|-------------|
 | init_width_or_weight | 0.0 | sets the starting width (fixed policy) or proportion (stretch) of the column. |

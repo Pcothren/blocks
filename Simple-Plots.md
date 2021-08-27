@@ -1,5 +1,6 @@
 | [Basics](#basics) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Simple-Plots) |
-|-|
+| ---- |
+||
 
 ## Basics
 Simple plots take in a list and plot y-axis data against the number of items in the list. These can be line graphs or histograms and are demonstrated below:
@@ -41,4 +42,4 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/wiki_images/simple_plots.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/wiki_images/simple_plots.PNG)

@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Adding/Deleting App Items](#adding-and-deleting-app-items) - [Deleting Only Children](#deleting-only-children) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Runtime-Adding-and-Deleting-Widgets) |
-|-|
+| ---- |
+||
 
 ## Basics
 With _Dear PyGui_ you can dynamically add and delete any items at runtime. This can be done by using a callback to run the desired item's `add_***` command and specifying the parent the item will belong to.

@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Images](#images) - [Viewport & Window](#viewport-and-window) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Drawing-API)|
-|-|
+|----|
+||
 
 ## Basics
 _Dear PyGui_ has a low level drawing API that is well suited for primitive drawing, custom widgets or even dynamic drawings.
@@ -24,7 +25,7 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/draw_items.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/draw_items.PNG)
 
 ## Images
 
@@ -57,7 +58,7 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/draw_images.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/draw_images.PNG)
 
 ## Viewport and Window
 
@@ -79,4 +80,4 @@ with dpg.window(label="Tutorial", width=300, height=300):
 dpg.start_dearpygui()
 ```
 Results:
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/draw_viewport.gif)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/draw_viewport.gif)

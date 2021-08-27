@@ -1,5 +1,6 @@
 | [Basics](#basics) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Logging) |
-|-|
+|----|
+||
 
 ## Built-In Logger
 Dear PyGui provides a built-in logger for easy logging. This widget resides in its own module which will need to be imported `dearpygui.logger`.
@@ -53,10 +54,10 @@ with dpg.window():
 
 dpg.start_dearpygui()
 ```
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/create_logger.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/create_logger.PNG)
 
 ## Custom Logger
 The built-in logger is completely made from dearpygui which means you can make your own or even recreate the built in one by looing at the logger.py module when you pip install or you can see it on the in the [logger.py](https://github.com/hoffstadt/DearPyGui/blob/master/DearPyGui/dearpygui/logger.py)
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/custom_logger.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/custom_logger.PNG)
 

@@ -1,5 +1,6 @@
 | [Basic Usage](#basic-usage) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Menus) |
-|-|
+|----|
+||
 
 The menu bar consists of the following components:
 
@@ -47,4 +48,4 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/wiki_images/menus.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/wiki_images/menus.PNG)

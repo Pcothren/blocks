@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Creating](#creating-init-files) - [Loading](#loading-init-files) - [Basic Usage](#basic-usage) |
-|-|
+|----|
+||
 
 
 ## Basics

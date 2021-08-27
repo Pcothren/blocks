@@ -1,5 +1,6 @@
 | [Basics](#basics) |
-|-|
+| ---- |
+||
 
 ## Basics
 For most use cases the render loop does not need to be considered and is completely handled by `start_dearpygui()`. 

@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Regular Usage](#regular-usage) - [Modal Usage](#modal-usage) - [Dialog Usage](#dialog-usage) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Popups) |
-|-|
+| ---- |
+||
 
 ## Basics
 Popups are windows that disappear when clicked off of. They are typically used as context menus when right-clicking a widget or as dialogs. In _Dear PyGui_ popups are just windows with *popup* set to **True**, *show* set to **False**, and a *clicked_handler* attached to a widget that shows the window when clicked.
@@ -21,7 +22,7 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/wiki_images/popups1.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/wiki_images/popups1.PNG)
 
 ## Modal Usage
 When the modal keyword is set to **True**, the popup will be modal. This prevents the user from interacting with other windows until the popup is closed. To close the popup, you must hide it. Below is an example:
@@ -41,7 +42,7 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/wiki_images/popup2.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/wiki_images/popup2.PNG)
 
 Mouse Button options include:
 * _mvMouseButton_Right_

@@ -1,5 +1,6 @@
 | [What?](#what-is-dear-pygui) - [Why?](#why-use-dear-pygui) - [Installing](#installing) - [First Run](#first-run) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Getting-Started)|
-|-|
+|----|
+||
 
 ## What is Dear PyGui
 

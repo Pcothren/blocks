@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Container Stack](#container-stack) - [Explicit Parental Assignment](#explicit-parental-assignment) - [Context Managers](#context-managers) |
-|-|
+| ---- |
+||
 
 ## Basics
 Unless an item is a root type or staging mode is active, all app items need to belong to a valid container item. An item's parent is deduced through the following process:

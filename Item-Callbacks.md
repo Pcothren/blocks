@@ -1,5 +1,6 @@
 | [Callback Basics](#callback-basics) - [User Data](#user-data) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Widget-Callbacks)|
-|-------------------------------------|
+|----|
+||
 
 ## Callback Basics
 

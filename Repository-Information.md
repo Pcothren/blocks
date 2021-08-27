@@ -24,6 +24,7 @@
 
 ## Platforms
 ![format](https://img.shields.io/pypi/format/dearpygui)
+
 | Platform | Rendering API | Newest Version |
 |----------|---------------|----------------|
 | **Windows 10** | _DirectX 11_ | [![PYPI](https://img.shields.io/pypi/v/dearpygui)](https://pypi.org/project/dearpygui/) |

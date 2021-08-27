@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Example](#example) - [Generated IDs](#generated-ids) - [Recent IDs](#recent-ids) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Widget-ID-System) |
-|-|
+|----|
+||
 
 ## Basics
 In _Dear PyGui_, all items must have an associated unique ID (UUID). This is stricter than _Dear ImGui_ in which some widgets do not need an ID at all. The reasons for this:
@@ -10,7 +11,9 @@ In _Dear PyGui_, all items must have an associated unique ID (UUID). This is str
 When a widget is created, an ID is generated for you automatically. It is your responsibility to store this ID if you intend on interacting with the widget at a later time.
 
 ```python
-unique_id = add_button(label="Press me")
+import dearpygui.dearpygui as dpg
+unique_id = dpg.add_button(label="Press me")
+dpg.start_dearpygui()
 ```
 
 ## Example

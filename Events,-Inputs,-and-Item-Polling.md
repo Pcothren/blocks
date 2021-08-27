@@ -1,5 +1,6 @@
 | [Handlers](#Handlers) - [Widget Handlers](#Widget-Handlers) - [Global Handlers](#Global-Handlers) - [Polling Item State](#Polling-Item-State)  - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Inputs-and-Input-Polling) |
-|-|
+|----|
+||
 
 ## Handlers
 Handlers are widgets that listen for certain events then run a callback when that event occurs.

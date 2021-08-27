@@ -1,5 +1,6 @@
 | [Introduction](#introduction) - [How To Use The Docs](#how-to-use-the-docs) - [Discussions](#discussions) - [Sponsor](#sponsor) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki) |
-|-|
+|----|
+||
 
 <div align="center">
   <img src="https://github.com/hoffstadt/DearPyGui/blob/assets/newlogo.jpg?raw=true" alt="Dear PyGui">

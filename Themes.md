@@ -1,17 +1,8 @@
 **UNDER CONSTRUCTION!**
 
-| Table of Contents |
-|-|
-| [Basics](#basics) |
-| [Categories](#categories)|
-| [Theme Deduction](#how-does-an-app-item-decide-its-color-style) |
-| [Apply theme to specific item](#apply-theme-to-specific-item) |
-| [Apply default theme](#apply-default-theme) |
- [Apply theme to a container](#apply-theme-to-a-container) |
-| [Apply theme to a type](#apply-theme-to-a-type) |
-| [Plot Markers](#plot-markers) |
-| [Core Colors](#core-colors) - [Plot Colors](#plot-colors) - [Node Colors](#node-colors) |
-| [Core Styles](#core-styles) - [Plot Styles](#plot-styles) - [Node Styles](#node-styles) |
+| [Basics](#basics) - [Categories](#categories) - [Theme Deduction](#how-does-an-app-item-decide-its-color-style) - [Apply theme to specific item](#apply-theme-to-specific-item) - [Apply default theme](#apply-default-theme) -[Apply theme to a container](#apply-theme-to-a-container) - [Apply theme to a type](#apply-theme-to-a-type) - [Plot Markers](#plot-markers) - [Core Colors](#core-colors) - [Plot Colors](#plot-colors) - [Node Colors](#node-colors) - [Core Styles](#core-styles) - [Plot Styles](#plot-styles) - [Node Styles](#node-styles) |
+| ---- |
+||
 
 ## Basics
 In _Dear PyGui_, there is an app item container called a "theme". A theme is composed of theme colors and styles which are themselves app items. The theme can either be set as the default theme, attached to an app item type, a item container, or a specific item. 
@@ -106,8 +97,8 @@ dpg.start_dearpygui()
 ```
 
 ## Plot Markers
-| | |
-|-|-|
+| Plot markers | |
+|----|----|
 | mvPlotMarker_None | mvPlotMarker_Circle |
 | mvPlotMarker_Square | mvPlotMarker_Diamond |
 | mvPlotMarker_Up | mvPlotMarker_Down |
@@ -116,8 +107,8 @@ dpg.start_dearpygui()
 | mvPlotMarker_Asterisk |
 
 ## Core Colors
-| | | |
-|-|-|-|
+| Core Colors | | |
+|----|----|----|
 | mvThemeCol_Text | mvThemeCol_TabActive | mvThemeCol_SliderGrabActive |
 | mvThemeCol_TextDisabled | mvThemeCol_TabUnfocused | mvThemeCol_Button |
 | mvThemeCol_WindowBg | mvThemeCol_TabUnfocusedActive | mvThemeCol_ButtonHovered |
@@ -140,8 +131,8 @@ dpg.start_dearpygui()
 | mvThemeCol_SliderGrab | mvThemeCol_ModalWindowDimBg |
 
 ## Plot Colors
-| | | |
-|-|-|-|
+| Plot Colors | | |
+|----|----|----|
 | mvPlotCol_Line | mvPlotCol_LegendBg | mvPlotCol_YAxisGrid |
 | mvPlotCol_Fill | mvPlotCol_LegendBorder | mvPlotCol_YAxis2 |
 | mvPlotCol_MarkerOutline | mvPlotCol_LegendText | mvPlotCol_YAxisGrid2 |
@@ -152,8 +143,8 @@ dpg.start_dearpygui()
 | mvPlotCol_PlotBorder | mvPlotCol_YAxis | mvPlotCol_Crosshairs |
 
 ## Node Colors
-| | | |
-|-|-|-|
+| Node Colors | | |
+|----|----|----|
 | mvNodeCol_NodeBackground | mvNodeCol_TitleBarSelected | mvNodeCol_BoxSelector |
 | mvNodeCol_NodeBackgroundHovered | mvNodeCol_Link | mvNodeCol_BoxSelectorOutline |
 | mvNodeCol_NodeBackgroundSelected | mvNodeCol_LinkHovered | mvNodeCol_GridBackground |

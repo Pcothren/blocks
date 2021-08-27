@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Manual Viewport](#manual-viewport) |
-|-|
+|----|
+||
 
 ## Basics
 The _viewport_ is what you traditionally call the _window_. In the case of _Dear PyGui_, we distinguish between the operating system window and the _Dear PyGui_ window by referring to the former as _the viewport_.

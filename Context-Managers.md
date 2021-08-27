@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Example](#example) - [Benefits](#benefits) - [Context Managers](#context-managers) - [Explicit Parental Assignment](#explicit-parental-assignment) - [Container Stack Operations](#container-stack-operations) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Context-Manager-Containers) |
-|-|
+|----|
+||
 
 ## Basics
 We have added context managers as helpers for most container items. For more detail, see [Parent Deduction & Container Stack](https://github.com/hoffstadt/DearPyGui/wiki/Parent-Deduction-&-Container-Stack).

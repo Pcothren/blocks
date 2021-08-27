@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Staging Container](staging-container) - [Wrapping Items with Classes](#wrapping-items-with-classes) |
-|-|
+| ---- |
+||
 
 ## Basics
 The staging system is used to create items or item hierarchies where the parent/root is to be decided at a later time. Staged items are not submitted for rendering. They can later be "unstaged", at which time a parent is known. The most basic example can be found below:

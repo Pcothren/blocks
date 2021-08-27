@@ -1,5 +1,6 @@
 | [Basics](#basics) - [Static Textures](#static-textures) - [Dynamic Textures](#dynamic-textures) - [Raw Textures](#raw-textures) - [Formats](#formats) -[Loading Images](#loading-images) |
-|-|
+| ---- |
+||
 
 ## Basics
 _Dear PyGui_ uses the Graphics Processing Unit (GPU) to create the graphical user interface(GUI) you see. To display an image, you must first create a texture with the image data that can then be uploaded to the GPU. These textures belong to a texture registry. We offer 3 types of textures:

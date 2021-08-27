@@ -1,5 +1,6 @@
 | [Basics](#basics) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Creating-Widgets) |
-|-|
+|----|
+||
 
 DearPyGui can be broken down into a few of categories:
 * **Items**

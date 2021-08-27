@@ -1,5 +1,7 @@
+
 | [Basics](#basics) - [Slots](#slots) - [Basic Example](#basic-example) - [Tips](#tips) |
-|-|
+|----|
+||
 
 ## Basics
 Most app items can have child app items. App items can only be children to valid **container** items with the exception of item event handlers, which can belong to non-container app items. Some related commands can be found below:
@@ -10,11 +12,11 @@ Most app items can have child app items. App items can only be children to valid
 | `get_item_slot(...)` | returns the item's target slot |
 | `get_item_parent(...)` | returns the item's parent's UUID |
 | `get_item_children(...)` | returns an item's children |
-| `reorder_items(...)` | reorders children in a single call
-| `move_item_up(...)` | moves an item within its slot
-| `move_item_down(...)` | moves an item within its slot
-| `move_item(...)` | moves an item anywhere
-| `set_item_children(...)` | unstaging a staging container
+| `reorder_items(...)` | reorders children in a single call |
+| `move_item_up(...)` | moves an item within its slot |
+| `move_item_down(...)` | moves an item within its slot |
+| `move_item(...)` | moves an item anywhere |
+| `set_item_children(...)` | unstaging a staging container |
 
 ## Slots
 App items are stored in target slots within their parent container. Below is the breakdown of slots:

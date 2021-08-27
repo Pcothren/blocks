@@ -1,5 +1,6 @@
 | [Basics](#basics) - [0.6.x](https://github.com/hoffstadt/DearPyGui_06/wiki/Developer-Tools) |
-|-|
+|----|
+||
 
 ## Basics
 _Dear PyGui_ constains several useful developer tools which can help debug _Dear PyGui_ applications. They can be seen below:
@@ -23,4 +24,4 @@ dpg.start_dearpygui()
 
 Results:
 
-![](https://github.com/hoffstadt/DearPyGui/blob/assets/examples_wiki_0.8.x/builtin_Dev_tools.PNG)
+![](https://raw.githubusercontent.com/hoffstadt/DearPyGui/assets/examples_wiki_0.8.x/builtin_Dev_tools.PNG)
