@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Items &#8212; testing-wiki 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference external" href="#basics">Basics</a> - <a class="reference external" href="https://github.com/hoffstadt/DearPyGui_06/wiki/Creating-Widgets">0.6.x</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>DearPyGui can be broken down into a few of categories:</p>
+<ul class="simple">
+<li><p><strong>Items</strong></p></li>
+<li><p><strong>UI Items</strong></p></li>
+<li><p><strong>Containers</strong></p></li>
+</ul>
+<section id="items">
+<h1>Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h1>
+<p>Everything created in <em>Dear_PyGui</em> is an <strong>item</strong>. New items can be created by calling various <code class="docutils literal notranslate"><span class="pre">add_*</span></code> or <code class="docutils literal notranslate"><span class="pre">draw_*</span></code> functions. These commands return a unique identifier that can be used to later refer to the item. <strong>UI items</strong> and <strong>containers</strong> are also <strong>items</strong> - but not every <strong>item</strong> is necessarily a <strong>UI item</strong> or <strong>container</strong>. Most items must be parented by another item.</p>
+<p>All items have the following optional parameters: <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">user_data</span></code>, and <code class="docutils literal notranslate"><span class="pre">use_internal_label</span></code>. The <code class="docutils literal notranslate"><span class="pre">id</span></code> is generated automatically and normally does not need to be included. A <code class="docutils literal notranslate"><span class="pre">label</span></code> serves as the display name for an item, while <code class="docutils literal notranslate"><span class="pre">user_data</span></code> can be any value and is frequently used for <strong>callbacks</strong>.</p>
+</section>
+<section id="containers">
+<h1>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h1>
+<p><strong>Container</strong> items act as -- well, <em>containers</em>. They are used to parent and store other items (including other containers). In addition to creating them by calling their corresponding <code class="docutils literal notranslate"><span class="pre">add_</span></code> function, they can also be created by calling their appropriately-named context manager function. Using these functions are the most convenient (and recommended) way to create new containers.</p>
+<p>Below is an example of creating two new <strong>window</strong> items using their context manager function and starting the application:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Window1&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="k">as</span> <span class="n">window1</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Window2&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="k">as</span> <span class="n">window2</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://github.com/Atlamillias/DearPyGui-Stuff/blob/main/wiki%20images/dpg_creating_appitems_ex2.png" /></p>
+</section>
+<section id="ui-items">
+<h1>UI Items<a class="headerlink" href="#ui-items" title="Permalink to this headline">¶</a></h1>
+<p><strong>UI items</strong> are items that are considered to be a visual (and usually interactable) element in your user interface. These include <strong>buttons</strong>, <strong>sliders</strong>, <strong>inputs</strong>, and even other containers such as <strong>windows</strong> and <strong>tree nodes</strong>.</p>
+<p>Below is an example for creating a <strong>window</strong> container that parents a few other items:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+
+<span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tutorial&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">window</span><span class="p">:</span>
+    <span class="c1"># When creating items within the scope of the context</span>
+    <span class="c1"># manager, they are automatically &quot;parented&quot; by the</span>
+    <span class="c1"># container created in the initial call. So, &quot;window&quot;</span>
+    <span class="c1"># will be the parent for all of these items.</span>
+
+    <span class="n">button1</span> <span class="o">=</span> <span class="n">dpg</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Press Me!&quot;</span><span class="p">)</span>
+
+    <span class="n">slider_int</span> <span class="o">=</span> <span class="n">dpg</span><span class="o">.</span><span class="n">add_slider_int</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slide to the left!&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">dpg</span><span class="o">.</span><span class="n">add_same_line</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">slider_float</span> <span class="o">=</span> <span class="n">dpg</span><span class="o">.</span><span class="n">add_slider_float</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slide to the right!&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># An item&#39;s unique identifier (id) is returned when</span>
+    <span class="c1"># creating items.</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Printing item id&#39;s: </span><span class="si">{</span><span class="n">window</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">button1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">slider_int</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">slider_float</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># If you want to add an item to an existing container, you</span>
+<span class="c1"># can specify which by passing the container&#39;s id as the</span>
+<span class="c1"># &quot;parent&quot; parameter.</span>
+<span class="n">button2</span><span class="o">=</span><span class="n">dpg</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Don&#39;t forget me!&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p><img alt="" src="https://github.com/Atlamillias/DearPyGui-Stuff/blob/main/wiki%20images/dpg_creating_widgets_ex1.png" /></p>
+</section>
+<section id="other-items-i-e-everything-else">
+<h1>Other Items (i.e. everything else)<a class="headerlink" href="#other-items-i-e-everything-else" title="Permalink to this headline">¶</a></h1>
+<p>Event <strong>handlers</strong>, <strong>registries</strong>, <strong>group</strong>, <strong>same_line</strong>, and <strong>themes</strong> are also items. These are under-the-hood items for customizing the functionality, flow, and overall look of your interface.</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">testing-wiki</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, pdiddy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Creating-Items.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

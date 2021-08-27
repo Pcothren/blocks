@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Dear PyGui (YouTube) &#8212; testing-wiki 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>The following video tutorials explain various aspects of Dear PyGui, which are outlined per video below. The first section contains all videos by the core developers. The second section lists a great video by the community.</p>
+<section id="introduction-to-dear-pygui-youtube">
+<h1>Introduction to Dear PyGui (<a class="reference external" href="https://www.youtube.com/watch?v=kkRXLrG5oMA">YouTube</a>)<a class="headerlink" href="#introduction-to-dear-pygui-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Dear PyGui is an extended Python wrapper around Dear ImGUI. Dear ImGUI is an Immediate Mode GUI (IMGUI) for real-time applications</p></li>
+<li><p>While Dear ImGui uses the fast Immediate Mode in the background, it simulates a traditional retained mode GUI to the Python developer, which makes it easy to work with.</p></li>
+<li><p>Requirements for installation: Python 3.6 and up (64-bit only)</p></li>
+<li><p>IDE: Setting up PyCharm, only pip install dearpygui is required</p></li>
+<li><p>How to run the built-in demo.</p></li>
+<li><p>Changing the default font type (OTF or TTF font)</p></li>
+<li><p>Creating a basic window</p></li>
+<li><p>Using a primary window so that the window matches the area of the viewport</p></li>
+</ul>
+</section>
+<section id="basics-of-callbacks-youtube">
+<h1>Basics of callbacks (<a class="reference external" href="https://youtu.be/5ci4oIzGXdI">YouTube</a>)<a class="headerlink" href="#basics-of-callbacks-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Callbacks are functions that are run when any action is taken on a certain widget.</p></li>
+<li><p>If a widget supports it, there will be a keyword called callback and that can be any callable.</p></li>
+<li><p>When using a callback, the keyword should not end with round brackets, e.g. (). The correct way to use a callback is: add_button(&quot;Press me&quot;, callback=func_name). The function func_name is called without ().</p></li>
+<li><p>The callback always transmits two <em>variables</em> to the callback function, e.g. sender and data.</p></li>
+<li><p>Sender is the name of the widget. Data is None by default, but additional data can be sent using the following: callback_data='extra data'.</p></li>
+<li><p>The tutorial shows the use of a callback for a float slider.</p></li>
+<li><p>Throughout the tutorial, the use of the built-in logger and documentation is demonstrated.</p></li>
+<li><p>The callback can be changed during runtime using set_item_callback.</p></li>
+</ul>
+</section>
+<section id="id-system-and-debug-tool-youtube">
+<h1>ID system and debug tool (<a class="reference external" href="https://youtu.be/zcGWJjGSn-w">YouTube</a>)<a class="headerlink" href="#id-system-and-debug-tool-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The first argument of a widget is the ID.</p></li>
+<li><p>The label defaults to the ID if no label is provided.</p></li>
+<li><p>Widgets need unique IDs, but can share the same label. There are two ways to accomplish this.</p></li>
+<li><p>Method 1: add_input_float('Float1', label='float1') and add_input_float('Float2', label='float1')</p></li>
+<li><p>Method 2: add_input_float('Float1##1') and add_input_float('Float1##2')</p></li>
+<li><p>ID's are used to retrieve data from widgets.</p></li>
+<li><p>Start the debug tool by typing show_debug()</p></li>
+<li><p>The debug tool lists all available commands under tab Commands</p></li>
+<li><p>You can execute code at runtime using the debug tool.</p></li>
+<li><p>Track the float values by log_debug(get_value('Float1##1'))</p></li>
+</ul>
+</section>
+<section id="parent-stack-system-youtube">
+<h1>Parent stack system (<a class="reference external" href="https://youtu.be/CVoArPhOLx4">YouTube</a>)<a class="headerlink" href="#parent-stack-system-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The parent stack is a collection of all containers in a GUI.</p></li>
+<li><p>A window is a root item, meaning that it can't have a parent and doesn't need to look at the parent stack. A window is also a container. Because it is a container, a window gets added to the parent stack.</p></li>
+<li><p>When an item is not a root item, it requires a parent. Every tab bar is added to the parent stack and to a container. A tab bar is a container itself as well. A tab is a child of tab bar, but it is also a container.</p></li>
+<li><p>When adding a second item of a parent, it is necessary to remove the first item from the parent stack, e.g. pop it, so that the second item becomes part of the containing parent and not its sibling.</p></li>
+<li><p>The end() command in the core module pops an item off of the parent stack.</p></li>
+<li><p>A checkbox or (radio) button is part of a container, but not a container itself.</p></li>
+<li><p>The simple module adds the context managers (e.g. 'with window' ). The with_ statements of the context managers automate the application of the end() statement, making the code easier to read.</p></li>
+</ul>
+</section>
+<section id="value-storage-system-youtube">
+<h1>Value Storage System (<a class="reference external" href="https://youtu.be/b7gm0f5vYcc">YouTube</a>)<a class="headerlink" href="#value-storage-system-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>In many GUI's the widget's value is stored inside the widget.</p></li>
+<li><p>In Dear PyGui, a key-value pair for each widget is stored in the value storage system. A key-value pair tracks the type of the value and the value itself. A widget's value can be retrieved and changed through the widget (by the user) and by the program.</p></li>
+<li><p>Every widget has a keyword source, which by default is equal to the widget's name. If you specify the source, the widget will use that key instead to look up and change values in the value storage system. This allows several widgets to manipulate a single value.</p></li>
+<li><p>If multiple widgets refer to the same keyword, the type and size have to be the same.</p></li>
+<li><p>Pre-add a value with add_value if you are using multiple widgets of different types or sizes on a single key-value pair.</p></li>
+<li><p>A code example is given to demonstrate the value storage system and its types and sizes.</p></li>
+</ul>
+</section>
+<section id="widget-basics-youtube">
+<h1>Widget basics (<a class="reference external" href="https://youtu.be/tqETQz2As9g">YouTube</a>)<a class="headerlink" href="#widget-basics-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>This tutorial shows how to use a number of widget types. Widget types include button, checkbox, label_text, input_int, drag_int, radio_button, combo, listbox and progress_bar widgets.</p></li>
+<li><p>The use of the callback keyword of a widget is shown. For example, add_button('Press me', callback=callback_function).</p></li>
+<li><p>The callback_function is called whenever that button is pressed. The callback always sends two arguments to the callback_function: sender and data. Sender is the name of the widget. The 'data' argument is often empty unless the widget has data to send or it is specified in the code. Nonetheless, the argument 'data' is always included.</p></li>
+<li><p>The use of a number of widget specific keywords are discussed.</p></li>
+<li><p>It is demonstrated how a progres bar widget can be controlled via a drag_int slider using set_value(...) and configure_item(...)</p></li>
+<li><p>Many widgets have multi-component versions as well.</p></li>
+<li><p>More complex use of widgets and multi-component widgets will be shown in future videos.</p></li>
+</ul>
+</section>
+<section id="tab-bar-tabs-and-tab-button-basics-youtube">
+<h1>Tab bar, tabs, and tab button basics (<a class="reference external" href="https://youtu.be/-NXf98oj70c">YouTube</a>)<a class="headerlink" href="#tab-bar-tabs-and-tab-button-basics-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Create a tab bar with the context manager from the simple module, e.g. with tab_bar('tb1') --&gt; with tab('t1') --&gt; add_button('b1').</p></li>
+<li><p>You can add a callback to a tab_bar using with tab_bar('tb1', callback=callback).</p></li>
+<li><p>You can add a button to a tab_bar using add_tab_button('+').</p></li>
+<li><p>Tabs in a tab bar can be made reorderable by using the keyword reorderable=True on the tab_bar.</p></li>
+</ul>
+</section>
+<section id="simple-plot-tooltip-youtube">
+<h1>Simple Plot &amp; Tooltip - (<a class="reference external" href="https://youtu.be/G1l-rtMUlsI">YouTube</a>)<a class="headerlink" href="#simple-plot-tooltip-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Simple-Plots">Simple plot</a> is for plotting simple data. This is not to be confused with the more powerful and complex <a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Plots">Plots</a>.</p></li>
+<li><p>Create a basic histogram using add_simple_plot(“Plot 1”, value=[1, 4.3, 8, 9, 3], histogram=True). There are several keywords to customise the plot.</p></li>
+<li><p>add_text(“Hover me”, tip=”A simple tooltip”). This simple tooltip is only for text. The <a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Tooltips">tooltip widget</a> is more powerful.</p></li>
+<li><p>The tooltip widget is a container, i.e. context manager, just like ‘with window’ and ‘with group’. The widget basically acts as another window, so that it can contain any other widget, such as a graph. The example in the video shows how to embed a simple plot in a tooltip in two lines of code.</p></li>
+<li><p>Note that the user cannot interact with the tooltip widget.</p></li>
+</ul>
+</section>
+<section id="popups-youtube">
+<h1>Popups (<a class="reference external" href="https://www.youtube.com/watch?v=paClQ6SewX8">YouTube</a>)<a class="headerlink" href="#popups-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Popups">Popups</a> require a parent. That may change in future versions of Dear PyGui.</p></li>
+<li><p>A popup is a container, so it has a context manager (with popup:).</p></li>
+<li><p>Popup is the only widget where the name is not the first argument.</p></li>
+<li><p>By default, popups are set on the right-click. To change to left-click, add the keyword mousebutton=mvMouseButtonLeft.</p></li>
+<li><p>Popups are a container and can contain any other widget, i.e. plots.</p></li>
+<li><p>The modal keyword greys everything else out to draw attention to the popup.</p></li>
+<li><p>To close the modal popup, it is necessary to add a button with a callback close_popup(&quot;popup1&quot;).</p></li>
+</ul>
+</section>
+<section id="experimental-windows-docking-youtube">
+<h1>Experimental Windows Docking (<a class="reference external" href="https://www.youtube.com/watch?v=dVm2U6kZb7U">YouTube</a>)<a class="headerlink" href="#experimental-windows-docking-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>The docking feature enables the user to dock windows to each other and the viewport.</p></li>
+<li><p>The docking feature is not documented yet (as of January 2021).</p></li>
+<li><p>enable_docking() will enable experimental docking.</p></li>
+<li><p>By default, the user needs to hold the shift key to enable docking.</p></li>
+<li><p>The keyword shift_only = False enables docking without holding the shift key.</p></li>
+<li><p>The keyword dock_space = True enables docking windows to the viewport.</p></li>
+<li><p>The docking feature is experimental because you cannot programmatically set up the docking positions.</p></li>
+<li><p>When the feature comes out of experimental, it can also function as a layout tool, but it still requires lots of work to be released as non-experimental.</p></li>
+</ul>
+</section>
+<section id="smart-tables-youtube">
+<h1>Smart tables (<a class="reference external" href="https://youtu.be/qL_zjinXTJk">YouTube</a>)<a class="headerlink" href="#smart-tables-youtube" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>This is an elaborate tutorial on creating a smart, interactive table.</p></li>
+<li><p>The table is created using managed_columns.</p></li>
+<li><p>The widgets used in the table are add_text, add_input_text and add_input_float</p></li>
+<li><p>After creating a working example, the code is refactored into a SmartTable class with header, row and get_cell_data methods.</p></li>
+<li><p>A widget's label can be hidden by using ## at the beginning of a label's name, e.g. add_input_text('##input_text_1') where input_text_1 is not shown in the GUI.</p></li>
+<li><p>Using add_separator() to change the horizontal spacing of the widgets.</p></li>
+<li><p>Using the built-in Dear PyGui debugger and logger for solving an coding issue.</p></li>
+</ul>
+<p>View all <a class="reference external" href="https://www.youtube.com/playlist?list=PLcqt7R3y3elGh7zoj1-oyygzTh9j81hKV">video tutorials on Dear PyGui</a> by the core developers on YouTube.</p>
+</section>
+<section id="dear-pygui-video-tutorials-by-the-community">
+<h1>Dear PyGui video tutorials by the community<a class="headerlink" href="#dear-pygui-video-tutorials-by-the-community" title="Permalink to this headline">¶</a></h1>
+<section id="creating-a-complete-python-app-with-dear-pygui-youtube">
+<h2>Creating a complete Python app with Dear PyGui (<a class="reference external" href="https://youtu.be/2RocXKPPx4o">YouTube</a>)<a class="headerlink" href="#creating-a-complete-python-app-with-dear-pygui-youtube" title="Permalink to this headline">¶</a></h2>
+<p>Learn how to create a fully-functional Python app step by step! In this project, we will build a graphic user interface with the brand new Dear PyGui library! We will connect this interface to a Simple SMS Spam Filter, which we've built together in a previous project. We will learn how to display images, text, user input, buttons, and separators, as well as hiding widgets and &quot;click&quot; event callback functions.</p>
+</section>
+</section>
+<section id="applications-developed-with-dear-pygui">
+<h1>Applications developed with Dear PyGui<a class="headerlink" href="#applications-developed-with-dear-pygui" title="Permalink to this headline">¶</a></h1>
+<section id="python-digital-phosphor-display-with-rtlsdr-youtube">
+<h2>Python Digital Phosphor Display with RTLSDR (<a class="reference external" href="https://www.youtube.com/watch?v=GPoQYTfQMxw">YouTube</a>)<a class="headerlink" href="#python-digital-phosphor-display-with-rtlsdr-youtube" title="Permalink to this headline">¶</a></h2>
+<p>This video demonstrates an Intensity graded FFT or Python Digital Phosphor Display by Thomas Schucker. The accompanying <a class="reference external" href="https://teaandtechtime.com/python-digital-phosphor-display-with-dearpygui/">blog post</a> shows how to create a this dynamic graph. The code can be downloaded from the <a class="reference external" href="https://github.com/Tschucker/Python-Digital-Phosphor-Display">Github repo</a>.</p>
+<p><img alt="Python Digital Phospor GUI" src="https://raw.githubusercontent.com/Tschucker/Python-Digital-Phosphor-Display/main/images/py_digital_phosphor_gui.png" /></p>
+</section>
+<section id="about-dear-pygui">
+<h2>About Dear PyGui<a class="headerlink" href="#about-dear-pygui" title="Permalink to this headline">¶</a></h2>
+<p>Dear PyGui is a <a class="reference external" href="https://github.com/hoffstadt/DearPyGui">user-friendly, flexible, powerful and cross-platform GUI framework for Python</a>. It supports the creation of apps on Windows, Linux and MacOS. As an extended wrapping of Dear ImGui, Dear PyGui is highly performant. While is primarily written in C/C++ and uses your GPU for renderering, the Python API for Dear PyGui is presented to the developer in a clean and accessible manner.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">testing-wiki</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, pdiddy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Video-Tutorials.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

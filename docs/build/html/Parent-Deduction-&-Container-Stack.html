@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Basics &#8212; testing-wiki 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference external" href="#basics">Basics</a> - <a class="reference external" href="#container-stack">Container Stack</a> - <a class="reference external" href="#explicit-parental-assignment">Explicit Parental Assignment</a> - <a class="reference external" href="#context-managers">Context Managers</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+</tr>
+</tbody>
+</table>
+<section id="basics">
+<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<p>Unless an item is a root type or staging mode is active, all app items need to belong to a valid container item. An item's parent is deduced through the following process:</p>
+<ol class="simple">
+<li><p>If item is a root, no parent needed; finished.</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">before</span></code> keyword, if used skip to 6 using parent of &quot;before&quot; item.</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">parent</span></code> keyword, if used skip to 6.</p></li>
+<li><p>Check container stack, if used skip to 6.</p></li>
+<li><p>If parent is not deduced and staging is active, add item to staging; finished.</p></li>
+<li><p>Check if parent is compatible.</p></li>
+<li><p>Check if parent accepts.</p></li>
+<li><p>If runtime, add item using runtime methods; finished.</p></li>
+<li><p>If startup, add item using startup methods; finished.</p></li>
+</ol>
+</section>
+<section id="container-stack">
+<h1>Container Stack<a class="headerlink" href="#container-stack" title="Permalink to this headline">¶</a></h1>
+<p>Container items can be manually pushed onto the container stack using <code class="docutils literal notranslate"><span class="pre">push_container_stack(...)</span></code> and popped off using <code class="docutils literal notranslate"><span class="pre">pop_container_stack(...)</span></code>. This process is automated when using <a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Context-Managers">context managers</a>. Below is a simple example demonstrating manual stack operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">push_container_stack</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">add_window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tutorial&quot;</span><span class="p">))</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">push_container_stack</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_bar</span><span class="p">())</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">push_container_stack</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">add_menu</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Themes&quot;</span><span class="p">))</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dark&quot;</span><span class="p">)</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Light&quot;</span><span class="p">)</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">pop_container_stack</span><span class="p">()</span>
+
+<span class="c1"># remove menu_bar from container stack</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">pop_container_stack</span><span class="p">()</span>
+
+<span class="c1"># remove window from container stack</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">pop_container_stack</span><span class="p">()</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="explicit-parental-assignment">
+<h1>Explicit Parental Assignment<a class="headerlink" href="#explicit-parental-assignment" title="Permalink to this headline">¶</a></h1>
+<p>Parents can be explicitly assigned using the <code class="docutils literal notranslate"><span class="pre">parent</span></code> keyword. This is most often used for adding new items at runtime. The above example can be shown again below using explicit parent assignment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tutorial&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;window&quot;</span><span class="p">)</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_bar</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="s2">&quot;window&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;menu_bar&quot;</span><span class="p">)</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu</span><span class="p">(</span><span class="s2">&quot;Themes&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;menu_bar&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;themes&quot;</span><span class="p">)</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dark&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;themes&quot;</span><span class="p">)</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Light&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;themes&quot;</span><span class="p">)</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="context-managers">
+<h1>Context Managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h1>
+<p>Context managers can be used to simplify the above example. All the context managers can be found <a class="reference external" href="https://github.com/hoffstadt/DearPyGui/wiki/Context-Managers">here</a> but a simple example can be found below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tutorial&quot;</span><span class="p">):</span>
+
+    <span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">menu_bar</span><span class="p">():</span>
+
+        <span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Themes&quot;</span><span class="p">):</span>
+            <span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dark&quot;</span><span class="p">)</span>
+            <span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Light&quot;</span><span class="p">)</span>
+            <span class="n">dpg</span><span class="o">.</span><span class="n">add_menu_item</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Classic&quot;</span><span class="p">)</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="benefits">
+<h2>Benefits<a class="headerlink" href="#benefits" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Automatically push the container to the container stack.</p></li>
+<li><p>Automatically pop the container off the container stack.</p></li>
+<li><p>They make the code more readable and structured.</p></li>
+</ol>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">testing-wiki</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, pdiddy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Parent-Deduction-&amp;-Container-Stack.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

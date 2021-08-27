@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Basics &#8212; testing-wiki 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference external" href="#basics">Basics</a> - <a class="reference external" href="#slots">Slots</a> - <a class="reference external" href="#basic-example">Basic Example</a> - <a class="reference external" href="#tips">Tips</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+</tr>
+</tbody>
+</table>
+<section id="basics">
+<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h1>
+<p>Most app items can have child app items. App items can only be children to valid <strong>container</strong> items with the exception of item event handlers, which can belong to non-container app items. Some related commands can be found below:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>command</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">is_item_container(...)</span></code></p></td>
+<td><p>checks if an item is a container type</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_item_slot(...)</span></code></p></td>
+<td><p>returns the item's target slot</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_item_parent(...)</span></code></p></td>
+<td><p>returns the item's parent's UUID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_item_children(...)</span></code></p></td>
+<td><p>returns an item's children</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reorder_items(...)</span></code></p></td>
+<td><p>reorders children in a single call</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_item_up(...)</span></code></p></td>
+<td><p>moves an item within its slot</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_item_down(...)</span></code></p></td>
+<td><p>moves an item within its slot</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_item(...)</span></code></p></td>
+<td><p>moves an item anywhere</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set_item_children(...)</span></code></p></td>
+<td><p>unstaging a staging container</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slots">
+<h1>Slots<a class="headerlink" href="#slots" title="Permalink to this headline">¶</a></h1>
+<p>App items are stored in target slots within their parent container. Below is the breakdown of slots:</p>
+<ul class="simple">
+<li><p><em>Slot 0</em>: <strong>mvFileExtension</strong>, <strong>mvFontRangeHint</strong>, <strong>mvNodeLink</strong>, <strong>mvAnnotation</strong>, <strong>mvDragLine</strong>, <strong>mvDragPoint</strong>, <strong>mvLegend</strong>, <strong>mvTableColumn</strong></p></li>
+<li><p><em>Slot 1</em>: All other app items</p></li>
+<li><p><em>Slot 2</em>: Draw items</p></li>
+<li><p><em>Slot 3</em>: item event handlers</p></li>
+<li><p><em>Slot 4</em>: <strong>mvDragPayload</strong></p></li>
+</ul>
+<p>To query what slot an item belongs to, use <code class="docutils literal notranslate"><span class="pre">get_item_slot(...)</span></code>.</p>
+</section>
+<section id="basic-example">
+<h1>Basic Example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h1>
+<p>Below is a simple example that demonstrates some of the above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">setup_registries</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;tutorial&quot;</span><span class="p">):</span>
+    <span class="n">dpg</span><span class="o">.</span><span class="n">add_button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Press me&quot;</span><span class="p">)</span>
+    <span class="n">dpg</span><span class="o">.</span><span class="n">draw_line</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># print children    </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">get_item_children</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">last_root</span><span class="p">()))</span>
+
+<span class="c1"># print children in slot 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">get_item_children</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">last_root</span><span class="p">(),</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># check draw_line&#39;s slot</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">get_item_slot</span><span class="p">(</span><span class="n">dpg</span><span class="o">.</span><span class="n">last_item</span><span class="p">()))</span>
+
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">start_dearpygui</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</section>
+<section id="tips">
+<h1>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">slot</span></code> keyword with <code class="docutils literal notranslate"><span class="pre">get_item_children(...)</span></code> to return just a specific slot.</p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">testing-wiki</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, pdiddy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Child-Operations,-Slots.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
